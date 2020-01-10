@@ -63,14 +63,7 @@ module ActiveMerchant #:nodoc:
 
       def initialize(options = {})
         requires!(options, :merchant_id, :username, :password)
-        require_valid_domain!(options, :domain)
         super
-      end
-
-      def require_valid_domain!(options, param)
-        if options[param]
-          raise ArgumentError.new('not a valid cardconnect domain') unless /\Dcardconnect.com:\d{1,}\D/ =~ options[param]
-        end
       end
 
       def purchase(money, payment, options = {})

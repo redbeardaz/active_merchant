@@ -16,10 +16,8 @@ class CardConnectTest < Test::Unit::TestCase
     }
   end
 
-  def test_incorrect_domain
-    assert_raise(ArgumentError) {
-      CardConnectGateway.new(username: 'username', password: 'password', merchant_id: 'merchand_id', domain: 'www.google.com')
-    }
+  def test_allow_domains_without_ports
+    assert CardConnectGateway.new(username: 'username', password: 'password', merchant_id: 'merchand_id', domain: 'www.google.com')
   end
 
   def test_successful_purchase
